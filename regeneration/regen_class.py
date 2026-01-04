@@ -6,9 +6,11 @@ pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Regenerator")
 clock = pygame.time.Clock()
-font = pygame.font.SysFont(None, 22)
+font = pygame.font.SysFont("dejavusansmono", 22)
+font_list = pygame.sysfont.get_fonts
 
-
+#for font in font_list():
+    #print(font)
 
 # ------ Player Class -------
 class Player:
@@ -38,8 +40,8 @@ class Player:
             return "You didn't catch anything!"
 
     def cheese(self):
-        self.hp = 200
-        self.mana = 200
+        self.hp = self.max_hp
+        self.mana = self.max_mana
 
 # ------ Create Player ------
 player = Player()
@@ -51,7 +53,7 @@ BAR_HEIGHT = 20
 BAR_X = 20
 HP_Y = 50
 MANA_Y = 85
-FISH_RESULT = "You want to fish?"
+fish_result = "You want to fish?"
 
 # ------ Main Loop ------
 running = True
@@ -73,7 +75,7 @@ while running:
                 running = False
 
             if event.key == pygame.K_f:
-                FISH_RESULT = player.fish()
+                fish_result = player.fish()
 
             if event.key == pygame.K_c:
                 player.cheese()
@@ -100,7 +102,7 @@ while running:
     # Text
     
     fish_text = font.render(
-        f"Fish Bag: {FISH_RESULT}",
+        f"Fish Bag: {fish_result}",
         True,
         ("green")
     )
@@ -135,6 +137,10 @@ while running:
     #screen.blit(mana_text, (20, 80))
 
     pygame.display.flip()
+
+    
+    # ===== DEBUGGER =====
+    # print(f"Fonts: {font_list()}")
 
 pygame.quit()    
 
