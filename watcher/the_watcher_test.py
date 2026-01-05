@@ -1,12 +1,8 @@
+from pathlib import Path
 
-from pathlib import Path            # Import Path for working with filesystem paths
-import time                         # Import time for sleeping between checks
-from playsound import playsound     # Import playsound to play audio alerts
-
-# Path to the file we want to watch.
 p = Path("/mnt/c/EQLite/Logs/eqlog_Sanguinne_P1999Green.txt")
 
-# The line of text we want to watch for
+
 phrase = "Your charm spell has worn off."
 
 
